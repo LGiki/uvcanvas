@@ -3,10 +3,18 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
-import { CommonProps, ControlProps, TimeProps } from "../../types/CommonProps";
+import {
+  ColorProps,
+  CommonProps,
+  ControlProps,
+  TimeProps,
+} from "../../types/CommonProps";
 
-
-export interface VenturoProps extends CommonProps, TimeProps, ControlProps {}
+export interface VenturoProps
+  extends CommonProps,
+    TimeProps,
+    ControlProps,
+    ColorProps {}
 
 export function Venturo(props: VenturoProps) {
   const propsRef = useRef<VenturoProps>(props);
@@ -44,7 +52,7 @@ export function Venturo(props: VenturoProps) {
       fragment: frag,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(0.3, 0.2, 0.5) },
+        uColor: { value: props.color ?? new Color(0.3, 0.2, 0.5) },
       },
     });
 

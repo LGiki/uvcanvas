@@ -1,3 +1,4 @@
+import { Color } from "ogl"
 
 
 export interface CommonProps {
@@ -11,4 +12,8 @@ export interface TimeProps {
 
 export interface ControlProps {
   paused?: boolean
+}
+
+export interface ColorProps {
+  color?: Color
 }

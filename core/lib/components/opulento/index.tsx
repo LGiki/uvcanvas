@@ -5,8 +5,9 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
+import { ColorProps } from "../../types/CommonProps";
 
-interface OpulentoProps {}
+interface OpulentoProps extends ColorProps {}
 
 export function Opulento(props: OpulentoProps) {
   const ctnDom = useRef<HTMLDivElement>(null);
@@ -38,7 +39,7 @@ export function Opulento(props: OpulentoProps) {
       fragment: frag,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(0.3, 0.2, 0.5) },
+        uColor: { value: props.color ?? new Color(0.3, 0.2, 0.5) },
         uResolution: {
           value: new Color(
             gl.canvas.width,

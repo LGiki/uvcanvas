@@ -3,9 +3,9 @@ import React from "react";
 import { useEffect, useRef } from "react";
 import vert from "./vert.glsl";
 import frag from "./frag.glsl";
-import { CommonProps, ControlProps, TimeProps } from "../../types/CommonProps";
+import { CommonProps, ControlProps, TimeProps, ColorProps } from "../../types/CommonProps";
 
-export interface LumiflexProps extends CommonProps, TimeProps, ControlProps {}
+export interface LumiflexProps extends CommonProps, TimeProps, ControlProps, ColorProps {}
 
 export function Lumiflex(props: LumiflexProps) {
   const propsRef = useRef<LumiflexProps>(props);
@@ -43,7 +43,7 @@ export function Lumiflex(props: LumiflexProps) {
       fragment: frag,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(0.3, 0.2, 0.5) },
+        uColor: { value: props.color ?? new Color(0.3, 0.2, 0.5) },
       },
     });
 
